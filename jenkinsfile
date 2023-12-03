@@ -19,7 +19,7 @@ pipeline{
                 
             }
             post {
-                sucess {
+                success {
                     archiveArtifacts artifacts: '**/spring-petclinic-*.jar'
                     junit testResults: '**/TEST-*.xml'
 

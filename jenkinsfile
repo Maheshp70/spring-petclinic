@@ -19,12 +19,12 @@ pipeline{
                 
             }
             post {
-                sucess{
+                sucess {
                     archiveArtifacts artifacts: '**/spring-petclinic-*.jar'
                     junit testResults: '**/TEST-*.xml'
 
                 }
-                failure{
+                failure {
                     mail subject: 'build stage failed',
                          from: 'build@learningthoughts.io',
                          to: 'pmaheshgoud222@gmail.com',

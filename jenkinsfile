@@ -4,7 +4,7 @@ pipeline{
         timeout(time: 30, unit: 'MINUTES')
     }
     triggers{
-         cron('1 * * * *')
+         cron('10 * * * *')
     }
     stages{
         stage(git){
@@ -24,13 +24,7 @@ pipeline{
                     junit testResults: '**/TEST-*.xml'
 
                 }
-                failure {
-                    mail subject: 'build stage failed',
-                         from: 'build@learningthoughts.io',
-                         to: 'pmaheshgoud222@gmail.com',
-                         body: "Refer to $BUILD_URL for more details"
-                }
-
+                
             }
 
         }

@@ -4,7 +4,7 @@ pipeline{
         timeout(time: 30, unit: 'MINUTES')
     }
     triggers{
-         cron('10 * * * *')
+         cron('1 * * * *')
     }
     stages{
         stage(git){

@@ -16,13 +16,15 @@ pipeline {
         stage('build') {
             steps {
                 sh 'mvn clean package'
+            
             }
-        }
-        post {
-            success {
-                archiveArtifacts artifacts: '**/spring-petclinic-*.jar'
-                
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/spring-petclinic-*.jar'
+                    junit testResults: '**/TEST-*.xml'
+                }
             }
         }
     }
+
 } 

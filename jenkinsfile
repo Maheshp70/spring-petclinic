@@ -21,9 +21,9 @@ pipeline {
         post {
             success {
                 archiveArtifacts artifacts: '**/spring-petclinic-*.jar',
-                junit '**/TEST-*.xml'
+                junit testResults: '**/TEST-*.xml'
             }
         }
-    }
 
-}
+    }
+} 

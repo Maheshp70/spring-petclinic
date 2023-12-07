@@ -1,32 +1,30 @@
-pipeline{
+pipeline {
     agent { label 'MAVEN' }
-    options{
-        timeout(time: 30, unit: 'MINUTES')
+    options { 
+        timeout(time: 20, unit: 'MINUTES') 
     }
-    triggers{
-         cron('10 * * * *')
+    triggers {
+        cron('10 * * * *')
     }
-    stages{
-        stage(git){
-            steps{
-                git url: 'https://github.com/Maheshp70/spring-petclinic.git',
-                    branch: 'dev'
+    stages {
+        stage('git') {
+            steps {
+                git url: 'https://github.com/Maheshp70/spring-petclinic.git', 
+                    branch: 'develop'
             }
         }
-        stage(build){
-            steps{
+        stage('build') {
+            steps {
                 sh 'mvn clean package'
-                
+            
             }
             post {
                 success {
                     archiveArtifacts artifacts: '**/spring-petclinic-*.jar'
                     junit testResults: '**/TEST-*.xml'
-
                 }
-                
             }
-
         }
     }
+
 }
